@@ -22,6 +22,8 @@ const AppProvider = ({ children }) => {
       });
       e.target[0].value = "";
       e.target[1].value = null;
+
+      console.log(state);
     } else {
       console.log(`no task was entered`);
     }
@@ -37,7 +39,7 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     //dunno what to do here so...
     document.title = `Just Do It!!!`;
-  }, []);
+  }, [state.taskList]);
 
   return (
     <AppContext.Provider
@@ -45,8 +47,6 @@ const AppProvider = ({ children }) => {
         ...state,
         handleSubmit,
         removeTask,
-        taskInput,
-        deadLineInput,
       }}
     >
       {children}
