@@ -8,23 +8,23 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // const handleChange = (task) => {
-  //   console.log(initalState.task);
-  //   console.log(initalState.taskList);
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch({
-      type: HANDLE_TASK,
-      payload: {
-        id: new Date().getTime().toString(),
-        task: e.target[0].value,
-        deadLine: e.target[1].value,
-      },
-    });
-    console.log(state);
+    if (e.target[0].value !== "" || e.target[1].value !== "") {
+      dispatch({
+        type: HANDLE_TASK,
+        payload: {
+          id: new Date().getTime().toString(),
+          task: e.target[0].value,
+          deadLine: e.target[1].value,
+        },
+      });
+      e.target[0].value = "";
+      e.target[1].value = null;
+    } else {
+      console.log(`no task was entered`);
+    }
   };
 
   const removeTask = (id) => {
@@ -45,6 +45,8 @@ const AppProvider = ({ children }) => {
         ...state,
         handleSubmit,
         removeTask,
+        taskInput,
+        deadLineInput,
       }}
     >
       {children}

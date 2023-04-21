@@ -9,6 +9,7 @@ const TaskForm = () => {
         <input type='text' placeholder='complete this goddamn app' />
         <br />
         <input type='number' placeholder='deadline in days' />
+        <br />
         <button type='submit'>Add!</button>
       </form>
     </div>
