@@ -4,8 +4,6 @@ import { useGLobalContext } from "../context";
 const TaskList = () => {
   const { taskList, removeTask } = useGLobalContext();
 
-  console.log(taskList);
-
   return (
     <div>
       <ul>

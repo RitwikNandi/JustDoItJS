@@ -1,4 +1,4 @@
-import { HANDLE_TASK, HANDLE_DELETE } from "./helper";
+import { HANDLE_TASK, HANDLE_DELETE, HANDLE_DELETE_ALL } from "./helper";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -17,6 +17,12 @@ const reducer = (state, action) => {
         taskList: state.taskList.filter((task) => {
           return task.id !== action.payload;
         }),
+      };
+
+    case HANDLE_DELETE_ALL:
+      return {
+        ...state,
+        taskList: [],
       };
 
     default:

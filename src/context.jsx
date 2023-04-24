@@ -1,12 +1,14 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import reducer from "./reducer";
-import { HANDLE_TASK, HANDLE_DELETE } from "./helper";
-import initialState from "./initialState/initialState";
+import { HANDLE_TASK, HANDLE_DELETE, HANDLE_DELETE_ALL } from "./helper";
+import { initialState, getLocalStorage } from "./initialState/initialState";
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  document.title = `Just Do It!!!`;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,8 +24,6 @@ const AppProvider = ({ children }) => {
       });
       e.target[0].value = "";
       e.target[1].value = null;
-
-      console.log(state);
     } else {
       console.log(`no task was entered`);
     }
@@ -36,9 +36,14 @@ const AppProvider = ({ children }) => {
     });
   };
 
+  const removeAllTask = () => {
+    dispatch({
+      type: HANDLE_DELETE_ALL,
+    });
+  };
+
   useEffect(() => {
-    //dunno what to do here so...
-    document.title = `Just Do It!!!`;
+    localStorage.setItem("taskList", JSON.stringify(state.taskList));
   }, [state.taskList]);
 
   return (
@@ -47,6 +52,7 @@ const AppProvider = ({ children }) => {
         ...state,
         handleSubmit,
         removeTask,
+        removeAllTask,
       }}
     >
       {children}
