@@ -1,8 +1,8 @@
-import { HANDLE_TASK, HANDLE_DELETE, HANDLE_DELETE_ALL } from "./helper";
+import { HANDLE_SUBMIT, HANDLE_DELETE, HANDLE_DELETE_ALL } from "./helper";
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case HANDLE_TASK:
+    case HANDLE_SUBMIT:
       return {
         ...state,
         id: action.payload.id,

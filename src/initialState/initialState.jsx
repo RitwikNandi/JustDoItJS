@@ -1,14 +1,10 @@
-export const initialState = {
-  id: 0,
+export default {
+  id: null,
   task: ``,
   deadLine: 0,
+  isEditing: false,
+  editId: null,
   taskList: localStorage.getItem("taskList")
     ? JSON.parse(localStorage.getItem("taskList"))
     : [],
-};
-
-export const getLocalStorage = () => {
-  if (localStorage.getItem("taskList")) {
-    return JSON.parse(localStorage.getItem("taskList"));
-  } else return initialState.taskList;
 };

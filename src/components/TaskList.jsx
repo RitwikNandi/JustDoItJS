@@ -5,21 +5,23 @@ const TaskList = () => {
   const { taskList, removeTask } = useGLobalContext();
 
   return (
-    <div>
-      <ul>
-        {taskList.map((tasks) => {
-          const { id, task, deadLine } = tasks;
-          return (
-            <li key={id}>
-              <h6>
-                {task} <span>{deadLine}</span>
-              </h6>
-
-              <button onClick={() => removeTask(id)}>remove</button>
-            </li>
-          );
-        })}
-      </ul>
+    <div className='task-container'>
+      {taskList.map((tasks) => {
+        const { id, task, deadLine } = tasks;
+        return (
+          <article className='task-item' key={id}>
+            <h4 className='title'>
+              <p>{task}</p>
+              <p className='title'>complete it by {deadLine} days</p>
+            </h4>
+            <div className='btn-container'>
+              <button className='delete-btn' onClick={() => removeTask(id)}>
+                Completed
+              </button>
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 };

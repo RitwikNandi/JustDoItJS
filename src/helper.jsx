@@ -1,3 +1,3 @@
-export const HANDLE_TASK = `HANDLE_TASK`;
+export const HANDLE_SUBMIT = `HANDLE_SUBMIT`;
 export const HANDLE_DELETE = `HANDLE_DELETE`;
 export const HANDLE_DELETE_ALL = `HANDLE_DELETE_ALL`;

@@ -4,13 +4,24 @@ import { useGLobalContext } from "../context";
 const TaskForm = () => {
   const { handleSubmit } = useGLobalContext();
   return (
-    <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input type='text' placeholder='complete this goddamn app' />
-        <br />
-        <input type='number' placeholder='deadline in days' />
-        <br />
-        <button type='submit'>Add!</button>
+    <div className='section-center'>
+      <form onSubmit={(e) => handleSubmit(e)} className='task-form'>
+        <h3>Just Do It!!!</h3>
+        <div className='form-control'>
+          <input
+            type='text'
+            placeholder='complete this goddamn app'
+            className='task'
+          />
+          <input
+            type='number'
+            placeholder='deadline in days'
+            className='task'
+          />
+          <button className='submit-btn' type='submit'>
+            Add!
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import reducer from "./reducer";
-import { HANDLE_TASK, HANDLE_DELETE, HANDLE_DELETE_ALL } from "./helper";
-import { initialState, getLocalStorage } from "./initialState/initialState";
+import { HANDLE_SUBMIT, HANDLE_DELETE, HANDLE_DELETE_ALL } from "./helper";
+import initialState from "./initialState/initialState";
 
 const AppContext = createContext();
 
@@ -15,7 +15,7 @@ const AppProvider = ({ children }) => {
 
     if (e.target[0].value !== "" || e.target[1].value !== "") {
       dispatch({
-        type: HANDLE_TASK,
+        type: HANDLE_SUBMIT,
         payload: {
           id: new Date().getTime().toString(),
           task: e.target[0].value,
@@ -32,7 +32,7 @@ const AppProvider = ({ children }) => {
   const removeTask = (id) => {
     dispatch({
       type: HANDLE_DELETE,
-      payload: id,
+      payload: { id },
     });
   };
 

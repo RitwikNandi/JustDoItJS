@@ -10,7 +10,9 @@ const Task = () => {
     <div>
       <TaskForm />
       <TaskList />
-      <button onClick={() => removeAllTask()}>Clear All!</button>
+      <button className='clear-btn' onClick={() => removeAllTask()}>
+        Clear All!
+      </button>
     </div>
   );
 };
