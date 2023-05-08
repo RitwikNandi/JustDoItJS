@@ -12,6 +12,7 @@ const reducer = (state, action) => {
       };
 
     case HANDLE_DELETE:
+      console.log(`not working`);
       return {
         ...state,
         taskList: state.taskList.filter((task) => {

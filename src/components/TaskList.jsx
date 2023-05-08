@@ -10,6 +10,7 @@ const TaskList = () => {
         const { id, task, deadLine } = tasks;
         return (
           <article className='task-item' key={id}>
+            {console.log(id)}
             <h4 className='title'>
               <p>{task}</p>
               <p className='title'>complete it by {deadLine} days</p>

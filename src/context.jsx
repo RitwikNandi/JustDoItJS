@@ -13,7 +13,7 @@ const AppProvider = ({ children }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (e.target[0].value !== "" || e.target[1].value !== "") {
+    if (e.target[0].value !== "" && e.target[1].value !== "") {
       dispatch({
         type: HANDLE_SUBMIT,
         payload: {
@@ -30,10 +30,13 @@ const AppProvider = ({ children }) => {
   };
 
   const removeTask = (id) => {
+    console.log(`is it working?`);
+    console.log(state.taskList);
     dispatch({
       type: HANDLE_DELETE,
-      payload: { id },
+      payload: id,
     });
+    console.log(state.taskList);
   };
 
   const removeAllTask = () => {

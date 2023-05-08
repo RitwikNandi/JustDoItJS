@@ -1,5 +1,5 @@
 export default {
-  id: null,
+  id: 0,
   task: ``,
   deadLine: 0,
   isEditing: false,
